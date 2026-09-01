@@ -87,7 +87,7 @@ python >= 3.9
 
 ```bash
 # Clone o repositório
-git clone https://github.com/ingridypinho/Restaurante.git
+git clone https://github.com/Isapinhoo/Restaurante.git
 
 # Acesse a pasta
 cd Restaurante
