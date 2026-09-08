@@ -42,7 +42,7 @@ def carregar_dados_json():
                     
                     # Criar restaurante
                     restaurante = Restaurante(nome_restaurante, "Fast Food")
-                    restaurante._ativo = True
+                    restaurante.alternar_estado()
                     
                     # Adicionar itens ao cardápio (max 5 por restaurante)
                     for item in dados[:5]:
@@ -117,16 +117,16 @@ def alternar_estado():
     
     print("\n--- RESTAURANTES DISPONÍVEIS ---")
     for i, restaurante in enumerate(Restaurante.restaurantes, 1):
-        status = "Ativo" if restaurante._ativo else "Inativo"
-        print(f"{i}. {restaurante._nome} [{status}]")
+        status = "Ativo" if restaurante.esta_ativo else "Inativo"
+        print(f"{i}. {restaurante.nome} [{status}]")
     
     try:
         opcao = int(input("\nEscolha o número do restaurante: ")) - 1
         if 0 <= opcao < len(Restaurante.restaurantes):
             restaurante = Restaurante.restaurantes[opcao]
             restaurante.alternar_estado()
-            estado = "ativado" if restaurante._ativo else "desativado"
-            print(f"\n✅ Restaurante '{restaurante._nome}' {estado}!")
+            estado = "ativado" if restaurante.esta_ativo else "desativado"
+            print(f"\n✅ Restaurante '{restaurante.nome}' {estado}!")
         else:
             print("\n❌ Opção inválida!")
     except ValueError:
@@ -140,7 +140,7 @@ def avaliar_restaurante():
     
     print("\n--- AVALIAR RESTAURANTE ---")
     for i, restaurante in enumerate(Restaurante.restaurantes, 1):
-        print(f"{i}. {restaurante._nome}")
+        print(f"{i}. {restaurante.nome}")
     
     try:
         opcao = int(input("\nEscolha o número do restaurante: ")) - 1
@@ -167,7 +167,7 @@ def ver_cardapio():
     
     print("\n--- SELECIONE O RESTAURANTE ---")
     for i, restaurante in enumerate(Restaurante.restaurantes, 1):
-        print(f"{i}. {restaurante._nome}")
+        print(f"{i}. {restaurante.nome}")
     
     try:
         opcao = int(input("\nEscolha o número: ")) - 1
@@ -186,7 +186,7 @@ def adicionar_item_cardapio():
     
     print("\n--- ADICIONAR ITEM AO CARDÁPIO ---")
     for i, restaurante in enumerate(Restaurante.restaurantes, 1):
-        print(f"{i}. {restaurante._nome}")
+        print(f"{i}. {restaurante.nome}")
     
     try:
         opcao = int(input("\nEscolha o restaurante: ")) - 1
